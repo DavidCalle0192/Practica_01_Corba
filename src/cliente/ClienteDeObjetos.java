@@ -5,12 +5,12 @@ import org.omg.CosNaming.NamingContextPackage.*;
 import org.omg.CORBA.*;
 
 import sop_corba.*;
-import sop_corba.GestionPacientesPackage.asintomaticoDTO;
+import sop_corba.GestionAsintomaticosPackage.asintomaticoDTO;
 
 public class ClienteDeObjetos {
     //*** Atributo estático ***
 
-    static GestionPacientesOperations ref;
+    static GestionAsintomaticos ref;
 
     public static void main(String args[]) {
         try {
@@ -31,7 +31,7 @@ public class ClienteDeObjetos {
 
             // *** Resuelve la referencia del objeto en el N_S ***
             String name = "objAnteproyecto";
-            ref = GestionPacientesHelper.narrow(ncRef.resolve_str(name));
+            ref = GestionAsintomaticosHelper.narrow(ncRef.resolve_str(name));
 
             System.out.println("Obtenido el manejador sobre el servidor de objetos: " + ref);
             String nombre;
@@ -63,24 +63,25 @@ public class ClienteDeObjetos {
                         direccion = UtilidadesConsola.leerCadena();
                        
                       
-                      /*  pacienteDTO paciente = new pacienteDTO(nombre, apellido, edad, numHabitacion);
-                        boolean bandera=ref.registrarPaciente(paciente);
-                        
-                        if (bandera){
+                       asintomaticoDTO paciente = new asintomaticoDTO(nombre, apellido, tipo_id, id, direccion);
+                       BooleanHolder res = new BooleanHolder(); 
+                       ref.registrarAsintomatico(paciente,res);
+                       
+                        if (res.value){
                             System.out.println("Paciente registrado con éxito");
                         }
                         else{
                             System.out.println("No ha sido posible registrar el paciente. Ya hay 5 pacientes");
-                        }*/
+                        }
                         break;
                         
                     case 2:
-                       /*
-                        System.out.println(" Digite el número de habitación del paciente: ");
-                        numHabitacion = UtilidadesConsola.leerEntero();                        
                        
-                        pacienteDTO pacienteObtenido = ref.consultarPaciente(numHabitacion);
-                        if (pacienteObtenido.numeroHabitacion!=-1){
+                        System.out.println(" Digite el número de identificación del paciente: ");
+                        id = UtilidadesConsola.leerEntero();                        
+                       
+                      /*  asintomaticoDTO pacienteObtenido = ref.consultarAsintomatico(id);
+                        if (pacienteObtenido.id!=-1){
                             mostrarPaciente(pacienteObtenido);
                         }
                         else{
@@ -101,8 +102,8 @@ public class ClienteDeObjetos {
     public static int menu() {
         
         System.out.println(" :: MENU ::");
-        System.out.println(" :1: Registrar Paciente");
-        System.out.println(" :2: Consultar Paciente");
+        System.out.println(" :1: Registrar Asintomatico");
+        System.out.println(" :2: Consultar Asintomatico");
         System.out.println(" :3: Salir");
         int rta = UtilidadesConsola.leerEntero();
         
@@ -114,8 +115,8 @@ public class ClienteDeObjetos {
         
         System.out.println("------------------------------");
         //System.out.println("Número de habitación: "+paciente.numeroHabitacion);
-        System.out.println("Nombre: "+paciente.nombre);
-        System.out.println("Apellido: "+paciente.apellido);
+        //System.out.println("Nombre: "+paciente.nombre);
+        //System.out.println("Apellido: "+paciente.apellido);
         //System.out.println("Edad: "+paciente.edad);
         
     }
