@@ -5,8 +5,9 @@ import org.omg.CosNaming.NamingContextPackage.*;
 import org.omg.CORBA.*;
 import org.omg.PortableServer.*;
 import org.omg.PortableServer.POA;
-import sop_corba.GestionPacientes;
-import sop_corba.GestionPacientesHelper;
+import sop_corba.GestionAsintomaticos;
+import sop_corba.GestionAsintomaticos;
+import sop_corba.GestionAsintomaticosHelper;
 
 public class ServidorDeObjetos {
 
@@ -27,11 +28,11 @@ public class ServidorDeObjetos {
       rootpoa.the_POAManager().activate();
 
       //*** crea una instancia del servant
-      GestionPacienteImpl objRemoto = new GestionPacienteImpl();
+      GestionAsintomaticosImpl objRemoto = new GestionAsintomaticosImpl();
        
       //*** se genera la referencia del servant
       org.omg.CORBA.Object obj = rootpoa.servant_to_reference(objRemoto);
-      GestionPacientes href = GestionPacientesHelper.narrow(obj);
+      GestionAsintomaticos href = GestionAsintomaticosHelper.narrow(obj);
 	  
       // se obtiene una referencia al name service
       org.omg.CORBA.Object objref =orb.resolve_initial_references("NameService");

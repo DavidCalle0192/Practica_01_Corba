@@ -7,14 +7,14 @@ package servidor;
 
 import java.util.HashMap;
 import org.omg.CORBA.BooleanHolder;
-import sop_corba.GestionPacientesPOA;
-import sop_corba.GestionPacientesPackage.asintomaticoDTO;
-import sop_corba.GestionPacientesPackage.asintomaticoDTOHolder;
+import sop_corba.GestionAsintomaticosPOA;
+import sop_corba.GestionAsintomaticosPackage.asintomaticoDTO;
+import sop_corba.GestionAsintomaticosPackage.asintomaticoDTOHolder;
 
-public class GestionPacienteImpl extends GestionPacientesPOA{
+public class GestionAsintomaticosImpl extends GestionAsintomaticosPOA{
 
     HashMap <Integer, asintomaticoDTO> pacientes = new HashMap<>();
-    public GestionPacienteImpl() {        
+    public GestionAsintomaticosImpl() {        
     }
     
     @Override
