@@ -117,10 +117,11 @@ public class ClienteDeObjetos {
     public static void mostrarPaciente(asintomaticoDTO paciente){        
         
         System.out.println("------------------------------");
-        //System.out.println("Número de habitación: "+paciente.numeroHabitacion);
-        //System.out.println("Nombre: "+paciente.nombre);
-        //System.out.println("Apellido: "+paciente.apellido);
-        //System.out.println("Edad: "+paciente.edad);
+        System.out.println("Número de identificación: "+paciente.id);
+        System.out.println("Tipo ID: "+paciente.tipo_id);
+        System.out.println("Nombre: "+paciente.nombres);
+        System.out.println("Apellido: "+paciente.apellidos);
+        System.out.println("Dirección: "+paciente.direccion);
         
     }
 }
