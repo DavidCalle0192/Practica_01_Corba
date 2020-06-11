@@ -5,7 +5,7 @@ import org.omg.CosNaming.NamingContextPackage.*;
 import org.omg.CORBA.*;
 
 import sop_corba.*;
-import sop_corba.GestionPacientesPackage.pacienteDTO;
+import sop_corba.GestionPacientesPackage.asintomaticoDTO;
 
 public class ClienteDeObjetos {
     //*** Atributo estático ***
@@ -58,7 +58,7 @@ public class ClienteDeObjetos {
                         edad = UtilidadesConsola.leerEntero();
                        
                       
-                        pacienteDTO paciente = new pacienteDTO(nombre, apellido, edad, numHabitacion);
+                      /*  pacienteDTO paciente = new pacienteDTO(nombre, apellido, edad, numHabitacion);
                         boolean bandera=ref.registrarPaciente(paciente);
                         
                         if (bandera){
@@ -66,19 +66,20 @@ public class ClienteDeObjetos {
                         }
                         else{
                             System.out.println("No ha sido posible registrar el paciente. Ya hay 5 pacientes");
-                        }
+                        }*/
                         break;
                         
                     case 2:
                         System.out.println(" Digite el número de habitación del paciente: ");
                         numHabitacion = UtilidadesConsola.leerEntero();                        
+                       /*
                         pacienteDTO pacienteObtenido = ref.consultarPaciente(numHabitacion);
                         if (pacienteObtenido.numeroHabitacion!=-1){
                             mostrarPaciente(pacienteObtenido);
                         }
                         else{
                             System.out.println("No se ha encontrado el paciente");
-                        }
+                        }*/
                         break;
                 }
                 
@@ -103,13 +104,13 @@ public class ClienteDeObjetos {
         
     }
     
-    public static void mostrarPaciente(pacienteDTO paciente){        
+    public static void mostrarPaciente(asintomaticoDTO paciente){        
         
         System.out.println("------------------------------");
-        System.out.println("Número de habitación: "+paciente.numeroHabitacion);
+        //System.out.println("Número de habitación: "+paciente.numeroHabitacion);
         System.out.println("Nombre: "+paciente.nombre);
         System.out.println("Apellido: "+paciente.apellido);
-        System.out.println("Edad: "+paciente.edad);
+        //System.out.println("Edad: "+paciente.edad);
         
     }
 }
