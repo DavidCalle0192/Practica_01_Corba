@@ -34,10 +34,11 @@ public class ClienteDeObjetos {
             ref = GestionPacientesHelper.narrow(ncRef.resolve_str(name));
 
             System.out.println("Obtenido el manejador sobre el servidor de objetos: " + ref);
-            int numHabitacion;
-            int edad;
             String nombre;
             String apellido;
+            String tipo_id;
+            int id;
+            String direccion;
             
             int rta = 0;
             do {
@@ -45,17 +46,21 @@ public class ClienteDeObjetos {
                 
                 switch(rta){
                     case 1:
-                        System.out.println(" Digite el número de habitación : ");
-                        numHabitacion = UtilidadesConsola.leerEntero();
-
+                        
                         System.out.println(" Digite el nombre del paciente: ");
                         nombre = UtilidadesConsola.leerCadena();
                         
                         System.out.println(" Digite el apellido del paciente: ");
                         apellido = UtilidadesConsola.leerCadena();
                         
+                        System.out.println(" Digite el tipo de identificación del paciente: ");
+                        tipo_id = UtilidadesConsola.leerCadena();
+                        
                         System.out.println(" Digite la edad : ");
-                        edad = UtilidadesConsola.leerEntero();
+                        id = UtilidadesConsola.leerEntero();
+                        
+                        System.out.println(" Digite la dirección de paciente: ");
+                        direccion = UtilidadesConsola.leerCadena();
                        
                       
                       /*  pacienteDTO paciente = new pacienteDTO(nombre, apellido, edad, numHabitacion);
@@ -70,9 +75,10 @@ public class ClienteDeObjetos {
                         break;
                         
                     case 2:
+                       /*
                         System.out.println(" Digite el número de habitación del paciente: ");
                         numHabitacion = UtilidadesConsola.leerEntero();                        
-                       /*
+                       
                         pacienteDTO pacienteObtenido = ref.consultarPaciente(numHabitacion);
                         if (pacienteObtenido.numeroHabitacion!=-1){
                             mostrarPaciente(pacienteObtenido);
