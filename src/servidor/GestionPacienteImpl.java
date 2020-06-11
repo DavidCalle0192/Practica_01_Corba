@@ -6,33 +6,36 @@
 package servidor;
 
 import java.util.HashMap;
+import org.omg.CORBA.BooleanHolder;
 import sop_corba.GestionPacientesPOA;
-import sop_corba.GestionPacientesPackage.pacienteDTO;
+import sop_corba.GestionPacientesPackage.asintomaticoDTO;
+import sop_corba.GestionPacientesPackage.asintomaticoDTOHolder;
 
 public class GestionPacienteImpl extends GestionPacientesPOA{
 
-    HashMap <Integer, pacienteDTO> pacientes = new HashMap<>();
+    HashMap <Integer, asintomaticoDTO> pacientes = new HashMap<>();
     public GestionPacienteImpl() {        
-    }
-
-    @Override
-    public boolean registrarPaciente(pacienteDTO objPaciente) {
-       System.out.println("Invocando a registrar paciente");
-       boolean bandera=false;
-       if (pacientes.size() < 5){
-           pacientes.put(objPaciente.numeroHabitacion, objPaciente);
-           bandera = true;
-       }
-       return bandera;
     }
     
     @Override
-    public pacienteDTO consultarPaciente(int numeroHabitacion) {
-        System.out.println("Invocando a consultar paciente");
-        pacienteDTO objPaciente= new pacienteDTO("", "",0, -1);
-        if (pacientes.get(numeroHabitacion) != null){
-            objPaciente = pacientes.get(numeroHabitacion);            
+    public void registrarAsintomatico(asintomaticoDTO asin_reg, BooleanHolder res) {
+        System.out.println("Ejecutando registrarAsintomatico...");
+        res.value = false;
+        if (pacientes.size() < 5){
+            if(!pacientes.containsKey(asin_reg.id)){
+                pacientes.put(asin_reg.id, asin_reg);
+                res.value = true;
+            }else{
+                System.out.println("Id "+asin_reg.id+" ya esta registrado");
+            }
+        }else{
+            System.out.println("Registros llenos");
         }
-        return objPaciente;
-    }    
+    }
+
+    @Override
+    public boolean consultarAsintomatico(int id, asintomaticoDTOHolder asin_bus) {
+        asin_bus.value = pacientes.get(id);
+        return asin_bus.value != null;
+    }
 }
