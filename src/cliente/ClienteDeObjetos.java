@@ -6,6 +6,7 @@ import org.omg.CORBA.*;
 
 import sop_corba.*;
 import sop_corba.GestionAsintomaticosPackage.asintomaticoDTO;
+import sop_corba.GestionAsintomaticosPackage.asintomaticoDTOHolder;
 
 public class ClienteDeObjetos {
     //*** Atributo estático ***
@@ -76,17 +77,19 @@ public class ClienteDeObjetos {
                         break;
                         
                     case 2:
-                       
+                        asintomaticoDTO objAsintomatico = new asintomaticoDTO();
+                       asintomaticoDTOHolder asin_bus = new asintomaticoDTOHolder();
+                       asin_bus.value=objAsintomatico;
                         System.out.println(" Digite el número de identificación del paciente: ");
                         id = UtilidadesConsola.leerEntero();                        
                        
-                      /*  asintomaticoDTO pacienteObtenido = ref.consultarAsintomatico(id);
-                        if (pacienteObtenido.id!=-1){
-                            mostrarPaciente(pacienteObtenido);
+                        boolean pacienteObtenido = ref.consultarAsintomatico(id, asin_bus);
+                        if (objAsintomatico.id!=-1){
+                            mostrarPaciente(objAsintomatico);
                         }
                         else{
                             System.out.println("No se ha encontrado el paciente");
-                        }*/
+                        }
                         break;
                 }
                 
