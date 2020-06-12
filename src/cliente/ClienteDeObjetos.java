@@ -15,16 +15,8 @@ public class ClienteDeObjetos {
 
     public static void main(String args[]) {
         try {
-            String[] vec = new String[4];
-            vec[0] = "-ORBInitialPort";
-            System.out.println("Ingrese la dirección IP donde escucha el n_s");
-            vec[1] = UtilidadesConsola.leerCadena();
-            vec[2] = "-ORBInitialPort";
-            System.out.println("Ingrese el puerto donde escucha el n_s");
-            vec[3] = UtilidadesConsola.leerCadena();
-
             // se crea e inicia el ORB
-            ORB orb = ORB.init(vec, null);
+            ORB orb = ORB.init(args, null);
 
             // se obtiene la referencia al name service
             org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
@@ -57,7 +49,7 @@ public class ClienteDeObjetos {
                         System.out.println(" Digite el tipo de identificación del paciente: ");
                         tipo_id = UtilidadesConsola.leerCadena();
                         
-                        System.out.println(" Digite la edad : ");
+                        System.out.println(" Digite la identificacion : ");
                         id = UtilidadesConsola.leerEntero();
                         
                         System.out.println(" Digite la dirección de paciente: ");
@@ -78,14 +70,14 @@ public class ClienteDeObjetos {
                         
                     case 2:
                         asintomaticoDTO objAsintomatico = new asintomaticoDTO();
-                       asintomaticoDTOHolder asin_bus = new asintomaticoDTOHolder();
-                       asin_bus.value=objAsintomatico;
+                        asintomaticoDTOHolder asin_bus = new asintomaticoDTOHolder();
+                        asin_bus.value=objAsintomatico;
                         System.out.println(" Digite el número de identificación del paciente: ");
                         id = UtilidadesConsola.leerEntero();                        
                        
                         boolean pacienteObtenido = ref.consultarAsintomatico(id, asin_bus);
-                        if (objAsintomatico.id!=-1){
-                            mostrarPaciente(objAsintomatico);
+                        if (pacienteObtenido){
+                            mostrarPaciente(asin_bus.value);
                         }
                         else{
                             System.out.println("No se ha encontrado el paciente");

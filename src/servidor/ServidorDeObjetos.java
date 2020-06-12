@@ -13,17 +13,9 @@ public class ServidorDeObjetos {
 
   public static void main(String args[]) {
     try{
-        
-        String[] vec = new String[4];
-        vec[0] = "-ORBInitialHost";
-        System.out.println("Ingrese la dirección IP donde escucha el n_s");
-        vec[1] = UtilidadesConsola.leerCadena();
-        vec[2] = "-ORBInitialPort";
-        System.out.println("Ingrese el puerto donde escucha el n_s");
-        vec[3] = UtilidadesConsola.leerCadena();
-        
+                
       // crea e inicia el ORB
-      ORB orb = ORB.init(vec, null);      
+      ORB orb = ORB.init(args, null);      
       POA rootpoa =  POAHelper.narrow(orb.resolve_initial_references("RootPOA"));
       rootpoa.the_POAManager().activate();
 

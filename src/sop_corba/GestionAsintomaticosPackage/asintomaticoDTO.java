@@ -18,6 +18,11 @@ public final class asintomaticoDTO implements org.omg.CORBA.portable.IDLEntity
 
   public asintomaticoDTO ()
   {
+      this.nombres = "";
+      this.apellidos = "";
+      this.tipo_id = "";
+      id = -1;
+      direccion = "";
   } // ctor
 
   public asintomaticoDTO (String _nombres, String _apellidos, String _tipo_id, int _id, String _direccion)
@@ -28,5 +33,7 @@ public final class asintomaticoDTO implements org.omg.CORBA.portable.IDLEntity
     id = _id;
     direccion = _direccion;
   } // ctor
+
+
 
 } // class asintomaticoDTO

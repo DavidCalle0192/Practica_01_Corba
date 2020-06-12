@@ -35,7 +35,21 @@ public class GestionAsintomaticosImpl extends GestionAsintomaticosPOA{
 
     @Override
     public boolean consultarAsintomatico(int id, asintomaticoDTOHolder asin_bus) {
-        asin_bus.value = pacientes.get(id);
-        return asin_bus.value != null;
+        System.out.println("Ejecutando consultarAsintomatico...");
+        boolean res=false;
+        
+        if(asin_bus!=null){
+            if(pacientes.containsKey(id)){
+                asin_bus.value = pacientes.get(id);
+                res = true;
+            }else{
+                if(asin_bus.value==null)asin_bus.value=new asintomaticoDTO();
+                System.out.println("No se encontro el asintomatico con id "+id);
+            }
+        }else{
+            System.out.println("asin_bus null");
+        }
+        
+        return res;
     }
 }
